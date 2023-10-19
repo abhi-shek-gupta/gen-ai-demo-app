@@ -1,11 +1,15 @@
-import { Reviews } from "@/types";
-export const reviews: Reviews = [
+import { ReviewType } from "@/types";
+
+export const reviews: ReviewType[] = [
   {
     title: "Incredible Engagement Boost!",
     rating: 5,
     content:
       "This article opened my eyes to the limitless possibilities of AI in the entertainment industry. The insights on generative AI and rejection sampling were fascinating, and I've already implemented some of these techniques in my game development. The result? A significant increase in user engagement and content personalization. This article is a game-changer!",
   },
+];
+
+export const review3: ReviewType[] = [
   {
     title: "Revolutionizing User Interaction",
     rating: 4,
@@ -20,7 +24,7 @@ export const reviews: Reviews = [
   },
 ];
 
-const reviews2 = [
+export const reviews2: ReviewType[] = [
   {
     title: "Enhancing User Experience",
     rating: 4,

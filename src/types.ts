@@ -1,32 +1,32 @@
 export type ArticleType = {
-  tags: string[];
-  title: string;
-  author: AuthorType;
-  body: BodyType[];
+	tags: string[];
+	title: string;
+	author: AuthorType;
+	body: BodyType[];
 };
 
 export interface AuthorType {
-  name: string;
-  published: string;
-  timeToRead: string;
-  bio: string;
+	name: string;
+	published: string;
+	timeToRead: string;
+	bio: string;
 }
 
 export interface ImageType {
-  src: string;
-  caption: string;
+	src: string;
+	caption: string;
 }
 
 export type BodyType = Partial<{
-  p: string;
-  h2: string;
-  image: ImageType;
+	p: string;
+	h2: string;
+	image: ImageType;
 }>;
 
 export type BodyTypeKey = keyof BodyType;
 
-export type Reviews = {
-  title: string;
-  content: string;
-  rating: number;
-}[];
+export type ReviewType = {
+	title: string;
+	rating: number;
+	content: string;
+};
