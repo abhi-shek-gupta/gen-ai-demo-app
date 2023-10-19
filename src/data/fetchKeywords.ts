@@ -1,5 +1,4 @@
-// This code is for v4 of the openai package: npmjs.com/package/openai
-import { Reviews } from "@/types";
+import { ReviewType } from "@/types";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -8,7 +7,7 @@ const openai = new OpenAI({
 });
 
 const keyWordAnalyzer = async (content:string) => {
-  console.log("welcome to openAI");
+  console.log("welcome to openAI fetching keywords");
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
@@ -43,11 +42,10 @@ const keyWordAnalyzer = async (content:string) => {
   }
 };
 
-const getAllKeywords = async (reviews:Reviews) => {
+const getAllKeywords = async (reviews:ReviewType[]) => {
   const keywordsMap = new Map();
   for (const review of reviews) {
     const keywords = await keyWordAnalyzer(review.content);
-    console.log({ keywords });
     const keyArr = keywords ? keywords.split(",") : [];
     for (const keyword of keyArr) {
       const cleanedKeyword = keyword.trim();
