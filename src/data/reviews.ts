@@ -68,3 +68,5 @@ export const reviews2: ReviewType[] = [
       "The article paints a promising picture of how generative AI and rejection sampling can boost user engagement, but the real test lies in its actual application and results. It's an interesting concept, and I'm eager to see more success stories and practical implementations before forming a strong opinion.",
   },
 ];
+
+export const totalReview:ReviewType[] = [...reviews, ...reviews2, ...review3]

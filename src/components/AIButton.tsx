@@ -1,13 +1,21 @@
 "use client";
 import fetchKeywords from "@/data/fetchKeywords";
 import fetchReviewsSummary from "@/data/fetchReviewsSummary";
-import { reviews } from "../data/reviews";
+import { totalReview as reviews } from "../data/reviews";
+import finalData from "@/data/finalData";
 
-const AIButton = () => {
+const AIButton = ({setData}) => {
   const handleClick = async () => {
-    const keywords = await fetchKeywords(reviews);
-    const reviewSummary = await fetchReviewsSummary(reviews);
-    console.log({reviewSummary,keywords });
+    // const keywords = await fetchKeywords(reviews);
+    // const reviewSummary = await fetchReviewsSummary(reviews);
+    // console.log({keywords });
+    setTimeout(()=>{
+      console.log("API is calling")
+      setData( {
+        reviewSummary: finalData.reviewSummary,
+        keywords: finalData.keywords,
+      })
+    } ,2000);
   };
 
   return (
