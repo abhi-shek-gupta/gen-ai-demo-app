@@ -21,16 +21,19 @@ const CategoryLink = ({
 
 const Header = () => {
 	return (
-		<div>
+        <div>
 			<div className="py-3 flex justify-between ">
 				<div className="flex gap-3 items-center">
 					<Image
-						src="/logo.svg"
-						alt="App Logo"
-						width={180}
-						height={37}
-						priority
-					/>
+                        src="/logo.svg"
+                        alt="App Logo"
+                        width={180}
+                        height={37}
+                        priority
+                        style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                        }} />
 					<div className="text-sky-700 font-semibold text-xs">
 						Helping businessess choose <br />
 						better software since 1999
@@ -69,7 +72,7 @@ const Header = () => {
 				</div>
 			</div>
 		</div>
-	);
+    );
 };
 
 export default Header;

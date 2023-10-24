@@ -8,7 +8,7 @@ import Share from "./Share";
 const Article = () => {
 	const { title, tags, author, body } = article1Data;
 	return (
-		<div className="my-7">
+        <div className="my-7">
 			<Tags tags={tags} />
 			<div className="flex flex-row justify-between gap-4">
 				<div className="basis-1/2">
@@ -19,12 +19,15 @@ const Article = () => {
 				</div>
 				<div>
 					<Image
-						src="/featuredImage.jpg"
-						alt="abstract backdrop with multicolored decorative gen ai"
-						objectFit="cover"
-						height={350}
-						width={600}
-					/>
+                        src="/featuredImage.jpg"
+                        alt="abstract backdrop with multicolored decorative gen ai"
+                        height={350}
+                        width={600}
+                        style={{
+                            maxWidth: "100%",
+                            height: "auto",
+                            objectFit: "cover"
+                        }} />
 				</div>
 			</div>
 
@@ -33,7 +36,7 @@ const Article = () => {
 				<ArticleBody body={body} />
 			</main>
 		</div>
-	);
+    );
 };
 
 export default Article;

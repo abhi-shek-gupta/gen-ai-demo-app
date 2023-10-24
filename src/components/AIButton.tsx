@@ -3,32 +3,35 @@ import fetchKeywords from "@/data/fetchKeywords";
 import fetchReviewsSummary from "@/data/fetchReviewsSummary";
 import { totalReview as reviews } from "../data/reviews";
 import finalData from "@/data/finalData";
+import { BsStars } from "react-icons/bs";
+import { WiStars } from "react-icons/wi";
 
-const AIButton = ({setData}) => {
-  const handleClick = async () => {
-    // const keywords = await fetchKeywords(reviews);
-    // const reviewSummary = await fetchReviewsSummary(reviews);
-    // console.log({keywords });
-    setTimeout(()=>{
-      console.log("API is calling")
-      setData( {
-        reviewSummary: finalData.reviewSummary,
-        keywords: finalData.keywords,
-      })
-    } ,2000);
-  };
+const AIButton = ({ setData }) => {
+	const handleClick = async () => {
+		// const keywords = await fetchKeywords(reviews);
+		// const reviewSummary = await fetchReviewsSummary(reviews);
+		// console.log({keywords });
+		setTimeout(() => {
+			console.log("API is calling");
+			setData({
+				reviewSummary: finalData.reviewSummary,
+				keywords: finalData.keywords,
+			});
+		}, 0);
+	};
 
-  return (
-    <>
-    <button
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-      onClick={handleClick}
-      type="button"
-    >
-      Generate Review Summary
-    </button>
-
-    </>
-  );
+	return (
+		<button
+			onClick={handleClick}
+			type="button"
+			title="Let's do AI Magic!"
+			className="rounded-full bg-black hover:bg-gray-700 hover:shadow-md active:bg-gray-800 active:shadow-lg opacity-90 scale-75"
+		>
+			<div className="p-2 focus-visible:invisible relative">
+				<BsStars className="text-yellow-500" size="1.5rem" />
+				<div className="absolute animate-ping bg-blue-800 w-5 h-5 top-2.5 left-2.5 rounded-full -z-10"></div>
+			</div>
+		</button>
+	);
 };
 export default AIButton;
