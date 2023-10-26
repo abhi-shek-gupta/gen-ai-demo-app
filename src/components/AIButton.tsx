@@ -6,18 +6,20 @@ import finalData from "@/data/finalData";
 import { BsStars } from "react-icons/bs";
 import { WiStars } from "react-icons/wi";
 
-const AIButton = ({ setData }) => {
+const AIButton = ({ setData, setIsLoading }) => {
 	const handleClick = async () => {
 		// const keywords = await fetchKeywords(reviews);
 		// const reviewSummary = await fetchReviewsSummary(reviews);
 		// console.log({keywords });
+		setIsLoading(true);
 		setTimeout(() => {
 			console.log("API is calling");
 			setData({
 				reviewSummary: finalData.reviewSummary,
 				keywords: finalData.keywords,
 			});
-		}, 0);
+			setIsLoading(false);
+		}, 3000);
 	};
 
 	return (

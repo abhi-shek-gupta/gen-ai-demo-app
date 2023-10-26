@@ -6,89 +6,93 @@ import { useMemo, useState } from "react";
 import { ActiveTagProps } from "@/types";
 import AIButton from "./AIButton";
 import Skeleton from "./Skeleton";
+import ReviewSummary from "./ReviewSummary";
 
 const FilterTags = ({
-	tags,
-	activeFilter,
-	setActiveFilter,
+  tags,
+  activeFilter,
+  setActiveFilter,
 }: ActiveTagProps) => {
-	const handleClick = (tag: string) => {
-		if (tag === activeFilter) return setActiveFilter("");
-		setActiveFilter(tag);
-	};
+  const handleClick = (tag: string) => {
+    if (tag === activeFilter) return setActiveFilter("");
+    setActiveFilter(tag);
+  };
 
-	return (
-		<div className="flex gap-4 my-4 flex-wrap">
-			{tags.map((tag) => {
-				const isActive = tag === activeFilter;
-				return (
-					<button
-						className={`px-3 py-1 rounded-full  shadow-md hover:shadow-sm  ${
-							isActive
-								? "bg-green-200 hover:bg-green-300"
-								: "bg-orange-200 hover:bg-orange-300"
-						}`}
-						key={tag}
-						onClick={() => handleClick(tag)}
-					>
-						{tag}
-					</button>
-				);
-			})}
-		</div>
-	);
+  return (
+    <div className="flex gap-4 my-4 flex-wrap">
+      {tags.map((tag) => {
+        const isActive = tag === activeFilter;
+        return (
+          <button
+            className={`px-3 py-1 rounded-full  shadow-md hover:shadow-sm  ${
+              isActive
+                ? "bg-green-200 hover:bg-green-300"
+                : "bg-orange-200 hover:bg-orange-300"
+            }`}
+            key={tag}
+            onClick={() => handleClick(tag)}
+          >
+            {tag}
+          </button>
+        );
+      })}
+    </div>
+  );
 };
 
 const Reviews = () => {
-	const reviews = totalReview;
+  const reviews = totalReview;
 
-	const [activeFilter, setActiveFilter] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
-	const [data, setData] = useState({ reviewSummary: "", keywords: [] });
+  const [activeFilter, setActiveFilter] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState({ reviewSummary: "", keywords: [] });
 
-	const sampleTags = data.keywords;
+  const sampleTags = data.keywords;
 
-	const filteredResults = useMemo(() => {
-		if (!activeFilter) return reviews;
+  const filteredResults = useMemo(() => {
+    if (!activeFilter) return reviews;
 
-		const query = activeFilter.trim().split(" ").join("|");
-		const regex = new RegExp(`(${query})`, "i");
+    const query = activeFilter.trim().split(" ").join("|");
+    const regex = new RegExp(`(${query})`, "i");
 
-		return reviews.filter((review) => regex.test(review.content));
-	}, [activeFilter]);
-	const onClick = () => {
-		setIsLoading(true);
-	};
-	return (
-		<div className="bg-sky-50 p-5 rounded-md">
-			<div className="flex gap-5 my-3">
-				<h2 className="text-2xl italic font-semibold text-sky-800">
-					Reviews on the article :
-				</h2>
-				<AIButton setData={setData} />
-			</div>
-			<Skeleton />
-			<FilterTags
-				tags={sampleTags}
-				activeFilter={activeFilter}
-				setActiveFilter={setActiveFilter}
-			/>
-			{activeFilter && (
-				<p className="font-semibold italic text-sm text-orange-800">
-					Showing {filteredResults.length} of {reviews.length} results
-					:
-				</p>
-			)}
-			<ul className="flex gap-4 overflow-x-scroll ">
-				{filteredResults.map((review) => (
-					<ReviewBox
-						review={review}
-						key={review.title}
-						activeFilter={activeFilter}
-					/>
-				))}
-			</ul>
+    return reviews.filter((review) => regex.test(review.content));
+  }, [activeFilter]);
+  const onClick = () => {};
+  return (
+    <div className="bg-sky-50 p-5 rounded-md">
+      <div className="flex gap-5 my-3">
+        <h2 className="text-2xl italic font-semibold text-sky-800">
+          Reviews on the article :
+        </h2>
+        <AIButton setData={setData} setIsLoading={setIsLoading} />
+      </div>
+      {isLoading ? (
+        <Skeleton />
+      ) : (
+		<div className="bg-slate-50">
+		<ReviewSummary summary={data.reviewSummary}/>
+        <FilterTags
+          tags={sampleTags}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+        />
 		</div>
-	);
+      )}
+      {activeFilter && (
+        <p className="font-semibold italic text-sm text-orange-800">
+          Showing {filteredResults.length} of {reviews.length} results :
+        </p>
+      )}
+      <ul className="flex gap-4 overflow-x-scroll ">
+        {filteredResults.map((review) => (
+          <ReviewBox
+            review={review}
+            key={review.title}
+            activeFilter={activeFilter}
+          />
+        ))}
+      </ul>
+    </div>
+  );
 };
 export default Reviews;
