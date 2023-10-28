@@ -6,10 +6,10 @@ const TagSkeleton = () => {
 	);
 };
 
-const Skeleton = () => {
+const Skeleton = ({ onlyText }: { onlyText?: boolean }) => {
 	return (
 		<div className="animate-pulse ">
-			<div className="border border-blue-300 shadow rounded-md p-4 w-full mx-auto">
+			<div className="border-2 border-blue-300 shadow rounded-md p-4 w-full mx-auto">
 				<div className="flex space-x-4">
 					<div className="flex-1 space-y-6 py-1">
 						<div className="h-2 bg-slate-400 rounded" />
@@ -23,15 +23,17 @@ const Skeleton = () => {
 					</div>
 				</div>
 			</div>
-			<div className="flex gap-4 w-full flex-wrap my-6">
-				<TagSkeleton />
-				<TagSkeleton />
-				<TagSkeleton />
-				<TagSkeleton />
-				<TagSkeleton />
-				<TagSkeleton />
-				<TagSkeleton />
-			</div>
+			{!onlyText && (
+				<div className="flex gap-4 w-full flex-wrap my-6">
+					<TagSkeleton />
+					<TagSkeleton />
+					<TagSkeleton />
+					<TagSkeleton />
+					<TagSkeleton />
+					<TagSkeleton />
+					<TagSkeleton />
+				</div>
+			)}
 		</div>
 	);
 };

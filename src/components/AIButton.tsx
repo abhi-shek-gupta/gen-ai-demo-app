@@ -4,14 +4,14 @@ import fetchReviewsSummary from "@/data/fetchReviewsSummary";
 import { totalReview as reviews } from "../data/reviews";
 import finalData from "@/data/finalData";
 import { BsStars } from "react-icons/bs";
-import { WiStars } from "react-icons/wi";
+import { AIButtonProps } from "@/types";
 
-const AIButton = ({ setData, setIsLoading }) => {
+const AIButton = ({ setData, setIsLoading }: AIButtonProps) => {
 	const handleClick = async () => {
+		setIsLoading(true);
 		// const keywords = await fetchKeywords(reviews);
 		// const reviewSummary = await fetchReviewsSummary(reviews);
 		// console.log({keywords });
-		setIsLoading(true);
 		setTimeout(() => {
 			console.log("API is calling");
 			setData({

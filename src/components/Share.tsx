@@ -1,6 +1,7 @@
 import { FaXTwitter, FaFacebookF, FaLinkedinIn, FaLink } from "react-icons/fa6";
 import { AiFillMail } from "react-icons/ai";
 import { IconType } from "react-icons/lib";
+import ArticleSummary from "./ArticleSummary";
 
 const renderIcon = (Icon: IconType) => (
 	<button className="bg-sky-700 p-3 rounded-full">
@@ -21,17 +22,7 @@ const Share = () => {
 					AiFillMail,
 				].map((icon) => renderIcon(icon))}
 			</div>
-			<div className="border border-sky-700 mt-5 p-3">
-				<p className="my-4">Was this article helpful to you ?</p>
-				<div className="flex gap-3 mb-5">
-					<button className="py-2 px-5 text-sky-700 rounded-full border-sky-700 border-2">
-						YES
-					</button>
-					<button className="py-2 px-5 text-sky-700 rounded-full border-sky-700 border-2">
-						NO
-					</button>
-				</div>
-			</div>
+			<ArticleSummary />
 		</div>
 	);
 };

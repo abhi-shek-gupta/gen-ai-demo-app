@@ -43,3 +43,8 @@ export interface ReviewBoxProps {
 	review: ReviewType;
 	activeFilter?: string;
 }
+
+export interface AIButtonProps {
+	setData: Dispatch<SetStateAction<any>>;
+	setIsLoading: Dispatch<SetStateAction<boolean>>;
+}

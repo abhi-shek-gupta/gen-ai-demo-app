@@ -1,12 +1,12 @@
 const ReviewSummary = ({ summary }: { summary: string }) => {
-  if (!summary) return null;
-  return (
-    <div className="m-5">
-      <h2 className="m-1 text-lg font-mono font-extrabold">
-        Summarized Review
-      </h2>
-      {summary}
-    </div>
-  );
+	if (!summary) return null;
+	return (
+		<div className="border-2 border-blue-300 shadow rounded-md p-4 w-full mx-auto">
+			<h2 className="m-1 text-xl font-bold">Summarized Review</h2>
+			{summary.split("\n").map((block) => (
+				<div>{block}</div>
+			))}
+		</div>
+	);
 };
 export default ReviewSummary;
