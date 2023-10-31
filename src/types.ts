@@ -45,6 +45,5 @@ export interface ReviewBoxProps {
 }
 
 export interface AIButtonProps {
-	setData: Dispatch<SetStateAction<any>>;
-	setIsLoading: Dispatch<SetStateAction<boolean>>;
+	handleClick : ()=>{};
 }

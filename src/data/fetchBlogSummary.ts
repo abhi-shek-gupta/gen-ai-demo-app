@@ -5,7 +5,7 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-const getSummary = async (content: string) => {
+const fetchBlogSummary = async (content: string) => {
   console.log("welcome to openAI Blog Summary");
   try {
     const response = await openai.chat.completions.create({
@@ -37,4 +37,4 @@ const getSummary = async (content: string) => {
   }
 };
 
-export default getSummary;
+export default fetchBlogSummary;
