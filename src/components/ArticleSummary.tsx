@@ -25,7 +25,7 @@ const ArticleSummary = () => {
         console.log("something went wrong", error);
       }
     };
-    fetchData();
+    // fetchData();
 
     const mockCall = () => {
       setIsLoading(true);
@@ -37,12 +37,12 @@ const ArticleSummary = () => {
         setIsLoading(false);
       }, 2000);
     };
-    // mockCall();
+    mockCall();
   };
   return (
     <div className="border-2 border-blue-300 shadow rounded-md p-4 w-full mx-auto mt-5">
       <p className="my-4">
-        Want AI to summarise the content for you?
+        Want AI to summarize the content for you?
         <span className="[&>button]:align-middle">
           <AIButton handleClick={handleClick} />
         </span>
