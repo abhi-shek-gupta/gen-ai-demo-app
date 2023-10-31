@@ -25,7 +25,7 @@ const ArticleSummary = () => {
         console.log("something went wrong", error);
       }
     };
-    // fetchData();
+    fetchData();
 
     const mockCall = () => {
       setIsLoading(true);
@@ -37,7 +37,7 @@ const ArticleSummary = () => {
         setIsLoading(false);
       }, 2000);
     };
-    mockCall();
+    // mockCall();
   };
   return (
     <div className="border-2 border-blue-300 shadow rounded-md p-4 w-full mx-auto mt-5">
@@ -53,7 +53,7 @@ const ArticleSummary = () => {
         ) : Boolean(data.length) ? (
           <div>
             <h2 className="m-1 text-xl font-bold">Blogs Highlights</h2>
-            <ul className="list-disc">
+            <ul className="list-disc m-5">
               {data.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
